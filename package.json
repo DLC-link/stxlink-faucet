@@ -1,0 +1,26 @@
+{
+  "name": "stx-link-faucet",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "start": "node app.js",
+    "dev": "DEBUG=true nodemon app.js"
+  },
+  "dependencies": {
+    "@stacks/keychain": "^3.3.0",
+    "@stacks/network": "^3.3.0",
+    "@stacks/transactions": "^3.3.0",
+    "@stacks/wallet-sdk": "^3.4.0",
+    "dotenv": "^16.0.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.3",
+    "express-async-handler": "^1.2.0",
+    "hcaptcha": "^0.1.1",
+    "http-errors": "^2.0.0",
+    "morgan": "^1.10.0",
+    "sqlite3": "^5.0.2"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.15"
+  }
+}

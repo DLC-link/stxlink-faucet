@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STXLINK Faucet</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://js.hcaptcha.com/1/api.js" async defer></script>
+    <script type="text/javascript">
+      function onSubmit(token) {
+        document.getElementById("address-form").submit();
+      }
+
+      function validate(event) {
+        event.preventDefault();
+        const span = document.getElementById("required-error");
+        if (document.getElementById("address").value) {
+          span.textContent = "";
+          const div = document.createElement("div");
+          div.className = "loader";
+          var element = document.getElementById("submitBtn");
+          element.appendChild(div);
+          element.disabled = true;
+          hcaptcha.execute();
+        } else {
+          span.textContent = "Please fill out the address field!";
+        }
+      }
+
+      function onload() {
+        var element = document.getElementById("submitBtn");
+        element.onclick = validate;
+      }
+    </script>
+  </head>
+
+  <body>
+    <main>
+      <div class="background"></div>
+      <div class="container">
+        <a href="/"><h1 class="title">STXLINK Faucet</h1></a>
+        <div class="form-container">
+          <form
+            id="address-form"
+            action="/get-stx-link"
+            method="post"
+            class="form"
+          >
+            <label for="address" class="address-input-label">
+              STX Testnet Address
+            </label>
+            <input
+              type="text"
+              id="address"
+              name="address"
+              class="address-input"
+              required
+            />
+            <div id="errors" class="errors">
+              <% if (locals.err) { %>
+              <span class="error"> <%= err %> </span>
+              <% } %>
+              <span id="required-error" class="error"></span>
+            </div>
+            <div
+              id="hcaptcha"
+              class="h-captcha"
+              data-sitekey="<%= sitekey %>"
+              data-callback="onSubmit"
+              data-size="invisible"
+            ></div>
+            <button id="submitBtn" class="address-button">Get STXLINK</button>
+            <script>
+              onload();
+            </script>
+          </form>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      This site is protected by hCaptcha and its
+      <a href="https://hcaptcha.com/privacy">Privacy Policy</a> and
+      <a href="https://hcaptcha.com/terms">Terms of Service</a> apply.
+    </footer>
+  </body>
+</html>

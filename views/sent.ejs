@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>STXLINK Faucet</title>
+    <link rel="stylesheet" href="/style.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body>
+    <main>
+      <div class="background"></div>
+      <div class="container">
+        <a href="/"><h1 class="title">STXLINK Faucet</h1></a>
+        <div class="form-container">
+          <p class="address-label">
+            Sent STXLINK to <span class="address"><%= addr %></span>.<br />
+            It should arrive soon.
+          </p>
+          <p class="transaction-id-label">Transaction ID:</p>
+          <p class="transaction-id"><%= txId %></p>
+        </div>
+      </div>
+    </main>
+    <footer class="footer">
+      This site is protected by hCaptcha and its
+      <a href="https://hcaptcha.com/privacy">Privacy Policy</a> and
+      <a href="https://hcaptcha.com/terms">Terms of Service</a> apply.
+    </footer>
+  </body>
+</html>
